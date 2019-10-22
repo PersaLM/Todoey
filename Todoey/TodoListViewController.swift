@@ -4,17 +4,23 @@
 //
 //  Created by Persa LM on 21/10/2019.
 //  Copyright © 2019 Persa LM. All rights reserved.
-//
+
 
 import UIKit
 
 class TodoListViewController: UITableViewController {
     
     var itemArray = ["Find Bebe", "Buy milk", "Let's eat"]
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let items = defaults.array(forKey: "ToDoListArray") as? [String] {
+            
+            itemArray = items
+        }
         
     }
 
@@ -66,6 +72,8 @@ class TodoListViewController: UITableViewController {
 //            What will happen once the user clicks the Add Item button on your UIAlert
             
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
             
             self.tableView.reloadData()
             
