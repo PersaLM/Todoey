@@ -132,7 +132,7 @@ class TodoListViewController: UITableViewController {
     
     if let data = try? Data(contentsOf: dataFilePath!) {
         let decoder = PropertyListDecoder()
-        
+          
         do {
             
         itemArray = try decoder.decode( [Item].self, from: data)
@@ -148,4 +148,5 @@ class TodoListViewController: UITableViewController {
 
     
 }
+
 
